@@ -8,17 +8,24 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import org.springframework.beans.factory.annotation.Value;
 
 @Service
 public class MidtransService {
+    
+    @Value("${midtrans.server-key}")
+    private String serverKey;
+
+    @Value("${midtrans.is-production}")
+    private boolean isProduction;
 
     public MidtransService() {
         // Set serverKey dan environment Midtrans global config
-        Midtrans.serverKey = "SB-Mid-server-efXF6oGx6czrJuIL5tLp03Rx"; // Ganti dengan serverKey Anda
-        Midtrans.isProduction = false; // Ubah ke true jika menggunakan environment production
+        Midtrans.serverKey = this.serverKey; // Ganti dengan serverKey Anda
+        Midtrans.isProduction = this.isProduction; // Ubah ke true jika menggunakan environment production
     }
 
-    public String createTransactionToken() throws MidtransError {
+    public String createTransactionToken() throws MidtransError  {
         UUID idRand = UUID.randomUUID();
         Map<String, Object> params = new HashMap<>();
 
@@ -38,4 +45,8 @@ public class MidtransService {
         // Generate transaction token
         return SnapApi.createTransactionToken(params);
     }
+    
+//    public String getStatusById (String id) {
+//        return
+//    }
 }

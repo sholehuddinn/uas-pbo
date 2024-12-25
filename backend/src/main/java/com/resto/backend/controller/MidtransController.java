@@ -1,10 +1,10 @@
 package com.resto.backend.controller;
 
 import com.resto.backend.service.MidtransService;
+import com.resto.backend.model.Chekout;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/midtrans")
@@ -22,4 +22,11 @@ public class MidtransController {
             return "Error: " + e.getMessage();
         }
     }
+    
+//    @PostMapping("/{order_id}/status")
+//    public Optional<Chekout> getStatusPayment(@PathVariable String order_id) {
+//        try {
+//            
+//        }
+//    }
 }
