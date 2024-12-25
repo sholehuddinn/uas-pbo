@@ -1,11 +1,11 @@
-com\resto\backend\controller\ChekoutController.class
 com\resto\backend\model\Order.class
 com\resto\backend\Backend.class
 com\resto\backend\service\MenuService.class
 com\resto\backend\repository\MenuRepository.class
+com\resto\backend\controller\MidtransController.class
 com\resto\backend\model\User.class
 com\resto\backend\model\OrderItem.class
-com\resto\backend\service\ChekoutService.class
+com\resto\backend\service\MidtransService.class
 com\resto\backend\model\Menu.class
 com\resto\backend\model\Chekout.class
 com\resto\backend\repository\CheckoutRepository.class
