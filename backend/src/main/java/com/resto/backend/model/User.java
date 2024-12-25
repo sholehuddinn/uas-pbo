@@ -10,6 +10,38 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
     private String name;
     private String username;
-    private String Password;
+    private String password;
+    
+    public User() {}
+    
+    public User(String Name, String Pass, String us) {
+        this.name = Name;
+        this.password = Pass;
+        this.username = us;
+    }
+    
+    public void setName(String Name) {
+        this.name = Name;
+    }
+    
+    public void setUsername(String Username) {
+        this.username = Username;
+    }
+    
+    public void setPassword(String Pass) {
+        this.password = Pass;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+    
+    public String getPassword() {
+        return password;
+    }
     
 }
