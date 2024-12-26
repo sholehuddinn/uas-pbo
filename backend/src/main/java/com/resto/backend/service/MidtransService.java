@@ -12,17 +12,11 @@ import org.springframework.beans.factory.annotation.Value;
 
 @Service
 public class MidtransService {
-    
-    @Value("${midtrans.server-key}")
-    private String serverKey;
-
-    @Value("${midtrans.is-production}")
-    private boolean isProduction;
 
     public MidtransService() {
         // Set serverKey dan environment Midtrans global config
-        Midtrans.serverKey = this.serverKey; // Ganti dengan serverKey Anda
-        Midtrans.isProduction = this.isProduction; // Ubah ke true jika menggunakan environment production
+        Midtrans.serverKey = "SB-Mid-server-efXF6oGx6czrJuIL5tLp03Rx"; // Ganti dengan serverKey Anda
+        Midtrans.isProduction = false; // Ubah ke true jika menggunakan environment production
     }
 
     public String createTransactionToken() throws MidtransError  {
@@ -32,7 +26,7 @@ public class MidtransService {
         // Transaction details
         Map<String, String> transactionDetails = new HashMap<>();
         transactionDetails.put("order_id", idRand.toString());
-        transactionDetails.put("gross_amount", "265000");
+        transactionDetails.put("gross_amount", "1000");
 
         // Credit card details
         Map<String, String> creditCard = new HashMap<>();
