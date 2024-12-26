@@ -15,7 +15,6 @@ import com.resto.backend.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -25,8 +24,6 @@ public class OrderService {
     @Autowired
     private OrderRepository OrderRepository;
     
-    int countId = 1;
-    
     public Optional<Order> getOrderById(String id) {
         return OrderRepository.findById(id);
     }
@@ -34,8 +31,6 @@ public class OrderService {
     public Order createOrder(Order Order) {
         
         try {
-            
-            Order.setOrderId(String.valueOf(countId++));
             
             if (Order.getStatus() == null || Order.getStatus().isEmpty()) {
                 Order.setStatus("pending");
