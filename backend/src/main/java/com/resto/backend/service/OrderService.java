@@ -35,11 +35,13 @@ public class OrderService {
         
         try {
             
-            Order.setOrderId(countId++);
+            Order.setOrderId(String.valueOf(countId++));
             
             if (Order.getStatus() == null || Order.getStatus().isEmpty()) {
                 Order.setStatus("pending");
             }
+            
+            int grand = 0;
 
             for (OrderItem item : Order.getItem()) { // Iterasi array
                 int total = 0;
@@ -48,7 +50,10 @@ public class OrderService {
                 
                 item.setTotal(total);
                 
+                grand += total;
             }
+            
+            Order.setGross_amount(grand);
 
             return OrderRepository.save(Order);
         } catch (Exception e) {

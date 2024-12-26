@@ -23,10 +23,4 @@ public class MidtransController {
         }
     }
     
-//    @PostMapping("/{order_id}/status")
-//    public Optional<Chekout> getStatusPayment(@PathVariable String order_id) {
-//        try {
-//            
-//        }
-//    }
 }

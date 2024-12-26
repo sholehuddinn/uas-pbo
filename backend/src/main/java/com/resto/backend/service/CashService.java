@@ -5,10 +5,20 @@
 package com.resto.backend.service;
 
 import com.resto.backend.model.Chekout;
+import com.resto.backend.repository.CheckoutRepository;
+
 /**
  *
  * @author fajar
  */
 public class CashService {
+    
+    public CheckoutRepository cek;
+    
+    public Chekout createPayment () {
+        
+        
+        return null;
+    }
     
 }

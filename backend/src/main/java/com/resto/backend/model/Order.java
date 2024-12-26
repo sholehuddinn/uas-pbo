@@ -7,29 +7,31 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "order")
 public class Order {
     @Id
-    private int orderId;
+    private String orderId;
     private String name;
     private String kursi;
     private String catatan;
     private String status;
     private OrderItem[] item; // OrderItem menjadi objek biasa
+    private int gross_amount;
     
     public Order() {}
     
-    public Order(int orderId, String Name, String Kursi, String Catatan, OrderItem[] order) {
+    public Order(String orderId, String Name, String Kursi, String Catatan, OrderItem[] order, int Gross_amount) {
         this.orderId = orderId;
         this.name = Name;
         this.kursi = Kursi;
         this.catatan = Catatan;
         this.item = order;
+        this.gross_amount = Gross_amount;
     }
 
     // Getter and Setter
-    public int getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
     
@@ -71,5 +73,13 @@ public class Order {
     
     public String getStatus () {
         return status;
+    }
+    
+    public void setGross_amount(int Gross_amount){
+        this.gross_amount = Gross_amount;
+    }
+    
+    public int getGross_amount() {
+        return gross_amount;
     }
 }
