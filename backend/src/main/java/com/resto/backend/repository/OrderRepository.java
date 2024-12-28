@@ -10,8 +10,10 @@ package com.resto.backend.repository;
  */
 
 import com.resto.backend.model.Order;
+import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface OrderRepository extends MongoRepository<Order, String> {
 
+    List<Order> findByStatus(String status);
 }

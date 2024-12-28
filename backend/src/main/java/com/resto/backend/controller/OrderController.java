@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/order")
@@ -33,8 +34,6 @@ public class OrderController {
         return null;
     }
     
-       
-    
     @PostMapping
     public Order createOrder(@RequestBody Order Order) {
         try {
@@ -44,6 +43,19 @@ public class OrderController {
             System.out.println(e);
         }
         return null;
+    }
+    
+    @GetMapping("/status/{status}")
+    public ResponseEntity<Order[]> getOrderPending(@PathVariable String status) {
+        // Mengambil daftar pesanan berdasarkan status
+        Order[] orders = orderService.getOrderByStatus(status);
+        
+        // Jika tidak ada pesanan dengan status tersebut
+        if (orders.length == 0) {
+            return ResponseEntity.noContent().build(); 
+        }
+        // Mengembalikan daftar pesanan dengan status tersebut
+        return ResponseEntity.ok(orders);
     }
     
     

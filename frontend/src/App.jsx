@@ -23,27 +23,51 @@ function App() {
     };
 
   }, []);
+
+  const getResult = async (result) => {
+    try {
+      const response = await fetch(`http://localhost:2000/api/v1/midtrans/result`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Tentukan format data yang dikirim
+        },
+        body: JSON.stringify(result), // Kirim data sebagai JSON
+      });
+  
+      // Cek apakah respon berhasil
+      if (response.ok) {
+        const responseData = await response.json(); // Mendapatkan data hasil dari backend
+        console.log("Response from server:", responseData);
+      } else {
+        console.error("Error sending result to backend");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   
   const pay = () => {
-    // Pastikan token ini diperoleh dari backend Anda
-    const transactionToken = 'c2fef9d5-bffd-4e52-9e4d-5ba3f507e68b'; // Token transaksi yang benar
-//                            c7eaf832-a721-4030-970e-c411c9929807
+    // Token transaksi yang benar, pastikan token ini valid dari backend
+    const transactionToken = '50954b7e-b23e-4b9f-bd3c-e74a817f22cd'; 
+  
     // Memanggil Snap API untuk melakukan pembayaran
     window.snap.pay(transactionToken, {
-      onSuccess: function(result) {
-        console.log("Payment Success:", result);
+      onSuccess: function (result) {
+        // Kirim hasil pembayaran setelah sukses
+        getResult(result); // Kirim data pembayaran ke backend
       },
-      onPending: function(result) {
-        console.log("Payment Pending:", result);
+      onPending: function (result) {
+        console.log("Payment Pending:", result); // Handle status pending
       },
-      onError: function(result) {
-        console.log("Payment Error:", result);
+      onError: function (result) {
+        console.log("Payment Error:", result); // Handle error
       },
-      onClose: function() {
+      onClose: function () {
         console.log("Customer closed the popup");
       }
     });
-  }
+  };
+  
 
   return (
     <>

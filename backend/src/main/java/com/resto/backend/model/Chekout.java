@@ -9,18 +9,18 @@ package com.resto.backend.model;
  * @author fajar
  */
 
-import com.resto.backend.model.Order;
-import com.resto.backend.model.Menu;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.time.LocalDateTime;
+import org.springframework.data.annotation.Id;
 
 @Document(collection = "checkout")
 public class Chekout {
 
+    @Id
     private String transaction_id;
     private String order_id;
     private String fraud_status;
     private String payment_type;
+    private String transaction_status;
     private int gross_amount;
     private int bayar;
     private int kembalian;
@@ -30,11 +30,12 @@ public class Chekout {
     public Chekout() {}
 
     // Parameterized Constructor
-    public Chekout(String transaction_id, String order_id, String fraud_status, String payment_type, int gross_amount, int bayar) {
+    public Chekout(String transaction_id, String order_id, String fraud_status, String payment_type,String Status, int gross_amount, int bayar) {
         this.transaction_id = transaction_id;
         this.order_id = order_id;
         this.fraud_status = fraud_status;
         this.payment_type = payment_type;
+        this.transaction_status = Status;
         this.gross_amount = gross_amount;
         this.bayar = bayar;
         this.kembalian = bayar - gross_amount; // Hitung kembalian saat object dibuat
@@ -111,5 +112,17 @@ public class Chekout {
 
     public void setTransaction_time(String transaction_time) {
         this.transaction_time = transaction_time;
+    }
+    
+    public String getTransaction_status() {
+        return transaction_status;
+    }
+
+    public void setTransaction_status(String transaction_status) {
+        this.transaction_status = transaction_status;
+    }
+
+    public Object get(String order_id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

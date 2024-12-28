@@ -7,6 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "order")
 public class Order {
 
+    @Id
+    private String id;
     private String name;
     private String kursi;
     private String catatan;
@@ -16,7 +18,8 @@ public class Order {
     
     public Order() {}
     
-    public Order(String Name, String Kursi, String Catatan, OrderItem[] order, int Gross_amount) {
+    public Order(String OrderId, String Name, String Kursi, String Catatan, OrderItem[] order, int Gross_amount) {
+        this.id = OrderId;
         this.name = Name;
         this.kursi = Kursi;
         this.catatan = Catatan;
@@ -25,6 +28,14 @@ public class Order {
     }
 
     // Getter and Setter
+    
+    public String getOrder_id() {
+        return id;
+    }
+    
+    public void setOrder_id(String id) {
+        this.id = id;
+    }
     
     public String getName() {
         return name;

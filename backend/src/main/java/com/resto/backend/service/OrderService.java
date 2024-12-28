@@ -12,6 +12,7 @@ package com.resto.backend.service;
 import com.resto.backend.model.Order;
 import com.resto.backend.model.OrderItem;
 import com.resto.backend.repository.OrderRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +57,29 @@ public class OrderService {
         }
         
         return null;
+    }
+    
+    public Order updateOrderStatus(String orderId, String status) {
+    // Mencari order berdasarkan ID
+    Optional<Order> orderOptional = OrderRepository.findById(orderId);
+    if (orderOptional.isPresent()) {
+        
+        // Ambil data order
+        Order order = orderOptional.get();
+        
+        // Set status baru
+        order.setStatus(status);
+        
+        // Simpan perubahan ke database
+        return OrderRepository.save(order);
+    } else {
+        // Lempar exception jika order tidak ditemukan
+        throw new RuntimeException("Order not found with ID: " + orderId);
+    }
+    }
+    
+    public Order[] getOrderByStatus(String Status) {
+        List<Order> orders = OrderRepository.findByStatus(Status);
+        return orders.toArray(new Order[0]); 
     }
 }
