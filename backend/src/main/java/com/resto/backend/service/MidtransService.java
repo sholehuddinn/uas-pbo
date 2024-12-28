@@ -3,26 +3,23 @@ package com.resto.backend.service;
 import com.resto.backend.model.Order;
 import com.resto.backend.model.OrderItem;
 import com.resto.backend.model.Chekout;
-import com.resto.backend.service.OrderService;
 import com.resto.backend.repository.CheckoutRepository;
 
 import com.midtrans.Midtrans;
 import com.midtrans.httpclient.SnapApi;
 import com.midtrans.httpclient.error.MidtransError;
-import java.util.ArrayList;
-import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.*;
 
 @Service
 public class MidtransService {
-    
-    @Autowired
-    public OrderService order_serpis;
     
     @Autowired
     public CheckoutRepository co_repo;
@@ -85,6 +82,8 @@ public class MidtransService {
         try {
             
             co.setBayar(co.getGross_amount());
+            co.setNama_kasir("midtrans");
+            co.setTransaction_time(LocalDateTime.now());
             
             return co_repo.save(co);
         } catch (Exception e) {

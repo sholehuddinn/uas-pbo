@@ -9,6 +9,9 @@ package com.resto.backend.model;
  * @author fajar
  */
 
+
+import java.time.LocalDateTime;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
 
@@ -21,29 +24,40 @@ public class Chekout {
     private String fraud_status;
     private String payment_type;
     private String transaction_status;
+    private String nama_kasir;
     private int gross_amount;
     private int bayar;
     private int kembalian;
-    private String transaction_time;
+    private LocalDateTime transaction_time;
 
     // Default Constructor
     public Chekout() {}
 
     // Parameterized Constructor
-    public Chekout(String transaction_id, String order_id, String fraud_status, String payment_type,String Status, int gross_amount, int bayar) {
+    public Chekout(String transaction_id, String order_id, String fraud_status, String payment_type, String Status, String namakasir, int gross_amount, int bayar, LocalDateTime time) {
         this.transaction_id = transaction_id;
         this.order_id = order_id;
         this.fraud_status = fraud_status;
         this.payment_type = payment_type;
+        this.nama_kasir = namakasir;
         this.transaction_status = Status;
         this.gross_amount = gross_amount;
         this.bayar = bayar;
         this.kembalian = bayar - gross_amount; // Hitung kembalian saat object dibuat
+        this.transaction_time = time;
     }
 
     // Getter and Setter for transaction_id
     public String getTransaction_id() {
         return transaction_id;
+    }
+    
+    public String getNama_kasir() {
+        return nama_kasir;
+    }
+    
+    public void setNama_kasir(String name) {
+        this.nama_kasir = name;
     }
 
     public void setTransaction_id(String transaction_id) {
@@ -106,11 +120,11 @@ public class Chekout {
     }
 
     // Getter and Setter for transaction_time
-    public String getTransaction_time() {
+    public LocalDateTime getTransaction_time() {
         return transaction_time;
     }
 
-    public void setTransaction_time(String transaction_time) {
+    public void setTransaction_time(LocalDateTime transaction_time) {
         this.transaction_time = transaction_time;
     }
     
@@ -120,9 +134,5 @@ public class Chekout {
 
     public void setTransaction_status(String transaction_status) {
         this.transaction_status = transaction_status;
-    }
-
-    public Object get(String order_id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
