@@ -21,7 +21,7 @@ Sistem Informasi Restoran ini dikembangkan menggunakan React.js sebagai frontend
 
 1. Clone repositori ini:
    ```bash
-   git clone <repository-url>
+   git clone <repository-url >
    ```
 2. Masuk ke direktori proyek:
    ```bash
