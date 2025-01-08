@@ -1,5 +1,6 @@
 com\resto\backend\model\Order.class
 com\resto\backend\Backend.class
+com\resto\backend\service\ImageService.class
 com\resto\backend\service\MenuService.class
 com\resto\backend\repository\MenuRepository.class
 com\resto\backend\controller\MidtransController.class

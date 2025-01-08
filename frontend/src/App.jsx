@@ -48,7 +48,7 @@ function App() {
   
   const pay = () => {
     // Token transaksi yang benar, pastikan token ini valid dari backend
-    const transactionToken = '50954b7e-b23e-4b9f-bd3c-e74a817f22cd'; 
+    const transactionToken = '1ae0d7b6-2fb2-4d59-8d9e-745b11773526'; 
   
     // Memanggil Snap API untuk melakukan pembayaran
     window.snap.pay(transactionToken, {
