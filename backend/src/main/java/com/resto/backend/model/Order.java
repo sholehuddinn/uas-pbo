@@ -1,6 +1,5 @@
 package com.resto.backend.model;
 
-import com.resto.backend.model.OrderItem;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,7 +12,7 @@ public class Order {
     private String kursi;
     private String catatan;
     private String status;
-    private OrderItem[] item; // OrderItem menjadi objek biasa
+    private OrderItem[] item; 
     private int gross_amount;
     
     public Order() {}
@@ -26,8 +25,6 @@ public class Order {
         this.item = order;
         this.gross_amount = Gross_amount;
     }
-
-    // Getter and Setter
     
     public String getOrder_id() {
         return id;

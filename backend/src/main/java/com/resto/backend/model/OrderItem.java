@@ -19,7 +19,6 @@ public class OrderItem {
         this.variant = varr;
     }
 
-    // Getter and Setter
     public String getProductId() {
         return productId;
     }

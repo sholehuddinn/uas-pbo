@@ -1,10 +1,8 @@
 package com.resto.backend.service;
 
-import com.resto.backend.model.Order;
 import com.resto.backend.repository.CheckoutRepository;
 import com.resto.backend.model.Chekout;
 
-import java.util.Optional;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -19,11 +17,13 @@ public class CashService {
 
     public Chekout createData (Chekout CO) {
         
-        Chekout co = new Chekout(UUID.randomUUID().toString(),
+        Chekout co = new Chekout(
+                UUID.randomUUID().toString(),
                 CO.getOrder_id(), 
                 null,
                 "cash",
-                CO.getTransaction_status(),CO.getNama_kasir(), 
+                CO.getTransaction_status(),
+                CO.getNama_kasir(), 
                 CO.getGross_amount(),
                 CO.getBayar(),
                 LocalDateTime.now());

@@ -14,7 +14,6 @@ public class Menu {
     
     public Menu() {}
 
-    // Constructor, Getter, Setter
     public Menu(String id, String namaMenu,String category, String gambar, double harga) {
         this.id = id;
         this.namaMenu = namaMenu;

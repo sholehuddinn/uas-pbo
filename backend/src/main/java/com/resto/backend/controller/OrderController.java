@@ -47,14 +47,11 @@ public class OrderController {
     
     @GetMapping("/status/{status}")
     public ResponseEntity<Order[]> getOrderPending(@PathVariable String status) {
-        // Mengambil daftar pesanan berdasarkan status
         Order[] orders = orderService.getOrderByStatus(status);
         
-        // Jika tidak ada pesanan dengan status tersebut
         if (orders.length == 0) {
             return ResponseEntity.noContent().build(); 
         }
-        // Mengembalikan daftar pesanan dengan status tersebut
         return ResponseEntity.ok(orders);
     }
     

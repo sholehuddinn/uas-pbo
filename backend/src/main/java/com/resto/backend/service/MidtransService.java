@@ -25,22 +25,19 @@ public class MidtransService {
     public CheckoutRepository co_repo;
     
     public MidtransService() {
-        // Set serverKey dan environment Midtrans global config
-        Midtrans.serverKey = "SB-Mid-server-efXF6oGx6czrJuIL5tLp03Rx"; // Ganti dengan serverKey Anda
-        Midtrans.isProduction = false; // Ubah ke true jika menggunakan environment production
+        Midtrans.serverKey = "SB-Mid-server-efXF6oGx6czrJuIL5tLp03Rx"; 
+        Midtrans.isProduction = false; 
     }
     
     public String createTransactionToken(Order order) throws MidtransError {
         Map<String, Object> params = new HashMap<>();
 
-        // Transaction details
         Map<String, Object> transaction_details = new HashMap<>();
         if (order.getOrder_id() == null || order.getOrder_id().isEmpty()) {
             throw new IllegalArgumentException("Order ID is missing or invalid.");
         }
         transaction_details.put("order_id", order.getOrder_id());
 
-        // Item details
         List<Map<String, Object>> item_details = new ArrayList<>();
         double totalAmount = 0;
 
@@ -54,27 +51,22 @@ public class MidtransService {
             totalAmount += item.getPrice() * item.getQuantity();
         }
 
-        // Validasi dan set gross_amount
         if (totalAmount != order.getGross_amount()) {
             throw new IllegalArgumentException("Gross amount does not match the sum of item details.");
         }
         transaction_details.put("gross_amount", totalAmount);
 
-        // Customer details
         Map<String, Object> customer_details = new HashMap<>();
         customer_details.put("first_name", order.getName());
 
-        // Credit card details
         Map<String, Object> credit_card = new HashMap<>();
         credit_card.put("secure", true);
 
-        // Combine params
         params.put("transaction_details", transaction_details);
         params.put("item_details", item_details);
         params.put("customer_details", customer_details);
         params.put("credit_card", credit_card);
 
-        // Generate transaction token
         return SnapApi.createTransactionToken(params);
     }
     

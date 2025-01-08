@@ -30,10 +30,8 @@ public class Chekout {
     private int kembalian;
     private LocalDateTime transaction_time;
 
-    // Default Constructor
     public Chekout() {}
 
-    // Parameterized Constructor
     public Chekout(String transaction_id, String order_id, String fraud_status, String payment_type, String Status, String namakasir, int gross_amount, int bayar, LocalDateTime time) {
         this.transaction_id = transaction_id;
         this.order_id = order_id;
@@ -43,11 +41,10 @@ public class Chekout {
         this.transaction_status = Status;
         this.gross_amount = gross_amount;
         this.bayar = bayar;
-        this.kembalian = bayar - gross_amount; // Hitung kembalian saat object dibuat
+        this.kembalian = bayar - gross_amount; 
         this.transaction_time = time;
     }
 
-    // Getter and Setter for transaction_id
     public String getTransaction_id() {
         return transaction_id;
     }
@@ -64,7 +61,6 @@ public class Chekout {
         this.transaction_id = transaction_id;
     }
 
-    // Getter and Setter for order_id
     public String getOrder_id() {
         return order_id;
     }
@@ -73,7 +69,6 @@ public class Chekout {
         this.order_id = order_id;
     }
 
-    // Getter and Setter for fraud_status
     public String getFraud_status() {
         return fraud_status;
     }
@@ -82,7 +77,6 @@ public class Chekout {
         this.fraud_status = fraud_status;
     }
 
-    // Getter and Setter for payment_type
     public String getPayment_type() {
         return payment_type;
     }
@@ -91,7 +85,6 @@ public class Chekout {
         this.payment_type = payment_type;
     }
 
-    // Getter and Setter for gross_amount
     public int getGross_amount() {
         return gross_amount;
     }
@@ -100,17 +93,15 @@ public class Chekout {
         this.gross_amount = gross_amount;
     }
 
-    // Getter and Setter for bayar
     public int getBayar() {
         return bayar;
     }
 
     public void setBayar(int bayar) {
         this.bayar = bayar;
-        this.kembalian = bayar - this.gross_amount; // Hitung kembalian saat setter dipanggil
+        this.kembalian = bayar - this.gross_amount; 
     }
 
-    // Getter and Setter for kembalian
     public int getKembalian() {
         return kembalian;
     }
@@ -119,7 +110,6 @@ public class Chekout {
         this.kembalian = kembalian;
     }
 
-    // Getter and Setter for transaction_time
     public LocalDateTime getTransaction_time() {
         return transaction_time;
     }

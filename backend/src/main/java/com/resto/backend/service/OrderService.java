@@ -39,10 +39,10 @@ public class OrderService {
             
             int grand = 0;
 
-            for (OrderItem item : Order.getItem()) { // Iterasi array
+            for (OrderItem item : Order.getItem()) { 
                 int total = 0;
                 
-                total = item.getQuantity() * item.getPrice(); // Hitung total
+                total = item.getQuantity() * item.getPrice(); 
                 
                 item.setTotal(total);
                 
@@ -60,22 +60,18 @@ public class OrderService {
     }
     
     public Order updateOrderStatus(String orderId, String status) {
-    // Mencari order berdasarkan ID
-    Optional<Order> orderOptional = OrderRepository.findById(orderId);
-    if (orderOptional.isPresent()) {
         
-        // Ambil data order
-        Order order = orderOptional.get();
-        
-        // Set status baru
-        order.setStatus(status);
-        
-        // Simpan perubahan ke database
-        return OrderRepository.save(order);
-    } else {
-        // Lempar exception jika order tidak ditemukan
-        throw new RuntimeException("Order not found with ID: " + orderId);
-    }
+        Optional<Order> orderOptional = OrderRepository.findById(orderId);
+        if (orderOptional.isPresent()) {
+
+            Order order = orderOptional.get();
+
+            order.setStatus(status);
+
+            return OrderRepository.save(order);
+        } else {
+            throw new RuntimeException("Order not found with ID: " + orderId);
+        }
     }
     
     public Order[] getOrderByStatus(String Status) {

@@ -1,6 +1,5 @@
 package com.resto.backend.controller;
 
-
 import com.resto.backend.service.CashService;
 import com.resto.backend.model.Chekout;
 import com.resto.backend.service.OrderService;
@@ -21,9 +20,6 @@ public class CashController {
     @Autowired
     private OrderService orderService;
 
-    /**
-     * @return 
-     */
     @PostMapping("/create")
     public Chekout createData(@RequestBody Chekout checkoutRequest) {
         try {
