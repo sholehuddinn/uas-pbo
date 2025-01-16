@@ -6,23 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.Operation;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/menu")
-@Tag(name = "Menu Controller", description = "Manajemen menu restoran")
 public class MenuController {
 
     @Autowired
     private MenuService menuService;
 
     @GetMapping
-    @Operation(summary = "Ambil semua menu", description = "Mengembalikan daftar semua menu restoran")
     public List<Menu> getAllMenu() {
         try {
             return menuService.getAllMenu();
@@ -33,7 +27,6 @@ public class MenuController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Ambil menu berdasarkan ID", description = "Mengembalikan menu berdasarkan ID")
     public Optional<Menu> getMenuById(@PathVariable String id) {
         try {
             return menuService.getMenuById(id);
@@ -44,7 +37,6 @@ public class MenuController {
     }
 
     @PostMapping
-    @Operation(summary = "Membuat menu baru", description = "Membuat menu baru dengan gambar jika ada")
     public Menu createMenu(@RequestParam("name") String name,
                            @RequestParam("price") Double price,
                            @RequestParam("category") String category,
@@ -62,7 +54,6 @@ public class MenuController {
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Perbarui menu berdasarkan ID", description = "Memperbarui menu dengan gambar baru jika ada")
     public Menu updateMenu(@PathVariable String id,
                            @RequestParam("name") String name,
                            @RequestParam("price") Double price,
@@ -82,7 +73,6 @@ public class MenuController {
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Hapus menu berdasarkan ID", description = "Menghapus menu berdasarkan ID")
     public void deleteMenu(@PathVariable String id) {
         try {
             menuService.deleteMenu(id);

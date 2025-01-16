@@ -32,7 +32,7 @@ public class MenuService {
 
     public Menu createMenu(Menu menu, MultipartFile file) throws IOException {
         if (file != null && !file.isEmpty()) {
-            String fileName = saveImage(file);  // Menyimpan gambar dan mendapatkan nama file
+            String fileName = saveImage(file); 
             menu.setGambar(fileName);  // Simpan nama file gambar ke dalam database
         }
         return menuRepository.save(menu);
