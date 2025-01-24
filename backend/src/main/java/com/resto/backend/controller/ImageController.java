@@ -13,11 +13,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author fajar
  */
+@RestController
 public class ImageController {
     @GetMapping("/image/{filename}")
     @ResponseBody
@@ -30,7 +32,7 @@ public class ImageController {
         }
 
         return ResponseEntity.ok()
-                .contentType(MediaType.IMAGE_JPEG)  // Ganti dengan tipe media gambar sesuai
+                .contentType(MediaType.IMAGE_JPEG)
                 .body(resource);
     }
 }

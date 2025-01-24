@@ -4,20 +4,33 @@
  */
 package com.resto.backend.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "user")
 public class User {
+    
+    @Id
+    private String user_id;
     private String name;
     private String username;
     private String password;
     
     public User() {}
     
-    public User(String Name, String Pass, String us) {
+    public User(String id,String Name, String Pass, String us) {
+        this.user_id = id;
         this.name = Name;
         this.password = Pass;
         this.username = us;
+    }
+    
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
+    }
+
+    public String getUser_id() {
+        return user_id;
     }
     
     public void setName(String Name) {
