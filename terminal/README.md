@@ -34,7 +34,7 @@ resto/
 
 1. **Clone repositori atau buat folder proyek**:
    ```sh
-   git clone https://github.com/username/resto-java.git
+   git clone https://github.com/shollehuddinn/uas-pbo.git
    cd resto-java
    ```
 2. **Kompilasi semua file Java**:
@@ -60,7 +60,7 @@ resto/
 ```
 === Login ===
 Username: admin
-Password: admin123
+Password: 123
 
 === Menu Admin ===
 1. Tambah Menu
